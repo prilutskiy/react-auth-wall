@@ -18,6 +18,7 @@
     "@semantic-release/github": "^7.2.0",
     "@semantic-release/npm": "^7.0.9",
     "@semantic-release/release-notes-generator": "^9.0.1",
+    "@testing-library/react": "^11.2.2",
     "@types/jest": "^26.0.19",
     "@types/react": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.11.0",
@@ -36,7 +37,7 @@
     "clean": "rm -rf build coverage",
     "build": "tsc",
     "test": "jest",
-    "lint": "eslint . --ext .js,.ts",
+    "lint": "eslint . --ext .js,.ts,.jsx,.tsx",
     "prepublishOnly": "yarn test && yarn build"
   },
   "files": [
@@ -44,6 +45,6 @@
   ],
   "keywords": [],
   "peerDependencies": {
-    "react": "^17.0.1"
+    "react": "*"
   }
 }
