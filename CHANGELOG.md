@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/prilutskiy/react-auth-wall/compare/v1.1.0...v1.2.0) (2020-12-24)
+
+
+### Features
+
+* added AuthWallFirebase component ([56b900e](https://github.com/prilutskiy/react-auth-wall/commit/56b900e4cbb07dcf5097efdd1fc3b70eeb5ae845))
+
 # [1.1.0](https://github.com/prilutskiy/react-auth-wall/compare/v1.0.1...v1.1.0) (2020-12-24)
 
 
