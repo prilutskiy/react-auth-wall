@@ -11,7 +11,7 @@ install:
 
 script:
   - yarn lint
-  - yarn test --coverage --passWithNoTests
+  - yarn test --coverage
   - bash <(curl -s https://codecov.io/bash)
   - yarn build
 
