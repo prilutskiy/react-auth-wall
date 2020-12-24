@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - 12.16.1
+  - 15.5.0
 
 branches:
   only:
@@ -11,16 +11,16 @@ install:
 
 script:
   - yarn lint
-  - yarn test --coverage
+  - yarn test --coverage --passWithNoTests
   - bash <(curl -s https://codecov.io/bash)
   - yarn build
 
-# deploy:
-#   - provider: script
-#     script: yarn semantic-release
-#     skip_cleanup: true
-#     on:
-#       branch: master
+deploy:
+  - provider: script
+    script: yarn semantic-release
+    skip_cleanup: true
+    on:
+      branch: master
 
 cache:
   yarn: true

@@ -1,1 +1,1 @@
-export const __stub = ''
+export {}
