@@ -50,6 +50,9 @@
   ],
   "keywords": [],
   "peerDependencies": {
-    "react": "*"
+    "react": ">=16.8.0"
+  },
+  "optionalDependencies": {
+    "firebase": "^8.2.1"
   }
 }
