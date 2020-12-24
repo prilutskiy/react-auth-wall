@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/prilutskiy/react-auth-wall/compare/v1.2.0...v1.2.1) (2020-12-24)
+
+
+### Bug Fixes
+
+* removed firebase and its typings ([f034ffe](https://github.com/prilutskiy/react-auth-wall/commit/f034ffe2d7a0fe03210192a00decdbc4aa434c12))
+
 # [1.2.0](https://github.com/prilutskiy/react-auth-wall/compare/v1.1.0...v1.2.0) (2020-12-24)
 
 
