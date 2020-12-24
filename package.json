@@ -1,10 +1,10 @@
 {
-  "name": "typescript-library-template",
+  "name": "react-auth-wall",
   "version": "0.0.0",
   "description": "",
   "main": "build/index.js",
   "types": "build/index.d.ts",
-  "repository": "",
+  "repository": "https://github.com/prilutskiy/react-auth-wall",
   "author": "Max Prilutskiy",
   "license": "MIT",
   "private": true,
@@ -41,5 +41,8 @@
   "files": [
     "build"
   ],
-  "keywords": []
+  "keywords": [],
+  "peerDependencies": {
+    "react": "^17.0.1"
+  }
 }

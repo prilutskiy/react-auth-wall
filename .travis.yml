@@ -15,12 +15,12 @@ script:
   - bash <(curl -s https://codecov.io/bash)
   - yarn build
 
-# deploy:
-#   - provider: script
-#     script: yarn semantic-release
-#     skip_cleanup: true
-#     on:
-#       branch: master
+deploy:
+  - provider: script
+    script: yarn semantic-release
+    skip_cleanup: true
+    on:
+      branch: master
 
 cache:
   yarn: true
