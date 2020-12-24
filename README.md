@@ -26,7 +26,7 @@ User is considered authenticated when `data` isn't falsy.
 import React from 'react'
 import { AuthWall } from 'react-auth-wall'
 
-export const RootContainer = () => {
+export const App = () => {
   return (
     <AuthWall
       authHook={useAuth}
@@ -54,7 +54,7 @@ import React from 'react'
 import { AuthWallFirebase } from 'react-auth-wall'
 import { firebaseApp } from './firebase'
 
-export const RootContainer = () => {
+export const App = () => {
   return (
     <AuthWallFirebase
       auth={firebaseApp.auth()}
