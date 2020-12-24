@@ -14,3 +14,30 @@ Install `react-auth-wall` using yarn:
 ```
 yarn add react-auth-wall
 ```
+
+## ⚙️ Usage
+
+User is considered authenticated when `data` isn't falsy.
+
+```js
+import React from 'react'
+import { AuthWall } from 'react-auth-wall'
+
+export const RootContainer = () => {
+  return (
+    <AuthWall
+      authHook={useAuth}
+      authComponent={() => <div>Login form</div>}
+      loaderComponent={() => <div>Loading...</div>}
+    >
+      My Web App
+    </AuthWall>
+  )
+}
+
+const useAuth = () => {
+  // ... user retrieval logic here
+
+  return { data: null, isLoading: false }
+}
+```
