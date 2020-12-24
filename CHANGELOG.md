@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/prilutskiy/react-auth-wall/compare/v1.0.1...v1.1.0) (2020-12-24)
+
+
+### Features
+
+* added auth-wall component ([68ba0ca](https://github.com/prilutskiy/react-auth-wall/commit/68ba0ca2986cdb72d86dc69b13c82086b6a46bfc))
+
 ## [1.0.1](https://github.com/prilutskiy/react-auth-wall/compare/v1.0.0...v1.0.1) (2020-12-24)
 
 
