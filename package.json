@@ -7,7 +7,7 @@
   "repository": "https://github.com/prilutskiy/react-auth-wall",
   "author": "Max Prilutskiy",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
