@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { AuthWall } from './auth-wall'
-import { render } from '@testing-library/react'
+import { render, act } from '@testing-library/react'
 import { Subject } from 'rxjs'
 
 describe('AuthWall', () => {
@@ -11,6 +11,7 @@ describe('AuthWall', () => {
 
     const wrapper = render(<AuthWall />)
 
+    console.error = originalConsoleError
     expect(mockedConsoleError).toBeCalled();
     expect(wrapper.container.firstChild).toBeNull();
   });
@@ -60,16 +61,14 @@ describe('AuthWall', () => {
     )
 
     // 1. set initial auth data, non-authenticated user
-    authDataSubject.next(null)
+    act(() => authDataSubject.next(null))
     // 2. render a component tree
     const wrapper = render(component);
     // 3. Check that auth component is renderer
     expect(wrapper.container.querySelector('#auth-component')).not.toBeNull()
     // 4. change auth state by setting new auth data
-    authDataSubject.next({})
-    // 5. rerender the component tree
-    wrapper.rerender(component)
-    // 6. Check that app component is rendered
+    act(() => authDataSubject.next({}))
+    // 5. Check that app component is rendered
     expect(wrapper.container.querySelector('#app-component')).not.toBeNull()
   });
 });
@@ -86,10 +85,7 @@ function createTestAuth() {
 
     function handleAuthChange() {
       const subscription = authDataSubject.subscribe({
-        next: (newData) => {
-          console.log('newData')
-          setData(newData)
-        }
+        next: setData,
       })
 
       return () => subscription.unsubscribe()
