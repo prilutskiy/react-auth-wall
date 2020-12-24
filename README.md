@@ -1,2 +1,2 @@
-Typescript Library Template
+React Auth Wall
 ---
