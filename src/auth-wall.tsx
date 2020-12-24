@@ -16,6 +16,10 @@ export const AuthWall: React.FC<AuthWallProps> = (props) => {
 
   throw new Error('react-auth-wall: Unexpected error');
 
+  function renderLoader() {
+    return props.loaderComponent ? <props.loaderComponent /> : null;
+  }
+
   function renderApp() {
     return props.appComponent ? <props.appComponent /> : <>{props.children}</>;
   }
@@ -27,15 +31,6 @@ export const AuthWall: React.FC<AuthWallProps> = (props) => {
     }
 
     return <props.authComponent />;
-  }
-
-  function renderLoader() {
-    if (!props.loaderComponent) {
-      console.warn('react-auth-wall: loaderComponent is not provided')
-      return null;
-    }
-
-    return <props.loaderComponent />;
   }
 }
 

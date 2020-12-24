@@ -1,7 +1,7 @@
 import React from 'react'
+import { act, render } from '@testing-library/react'
 
 import { AuthWallFirebase } from './auth-wall-firebase'
-import { act, render } from '@testing-library/react'
 
 describe('AuthWallFirebase', () => {
   it('Is in loading state by default', () => {

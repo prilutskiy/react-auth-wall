@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import Firebase from 'firebase/app'
 
 import { AuthWall, AuthWallProps } from './auth-wall'
 
@@ -15,25 +14,25 @@ export const AuthWallFirebase: React.FC<AuthWallFirebaseProps> = (props) => {
 }
 
 export type AuthWallFirebaseProps = Omit<AuthWallProps, 'authHook'> & {
-  auth: Firebase.auth.Auth
+  auth: any
 }
 
-const useFirebaseAuth = (auth: Firebase.auth.Auth) => {
+const useFirebaseAuth = (auth: any) => {
   const defaultAuthData = auth.currentUser;
 
   const isLoadingByDefault = !defaultAuthData;
   const [isLoading, setIsLoading] = useState(isLoadingByDefault);
 
   const [data, setData] = useState(defaultAuthData)
-  const [error, setError] = useState<Firebase.auth.Error>()
+  const [error, setError] = useState<Error>()
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(
-      (newData) => {
+      (newData: any) => {
         setData(newData);
         setIsLoading(false);
       },
-      (err) => {
+      (err: any) => {
         setError(err);
         setIsLoading(false);
       },
