@@ -52,7 +52,5 @@
   "peerDependencies": {
     "react": ">=16.8.0"
   },
-  "optionalDependencies": {
-    "firebase": "^8.2.1"
-  }
+  "optionalDependencies": {}
 }
