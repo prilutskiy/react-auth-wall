@@ -19,6 +19,9 @@ yarn add react-auth-wall
 
 User is considered authenticated when `data` isn't falsy.
 
+#### `AuthWall`
+
+
 ```js
 import React from 'react'
 import { AuthWall } from 'react-auth-wall'
@@ -39,5 +42,27 @@ const useAuth = () => {
   // ... user retrieval logic here
 
   return { data: null, isLoading: false }
+}
+```
+
+
+#### `AuthWallFirebase`
+
+
+```js
+import React from 'react'
+import { AuthWallFirebase } from 'react-auth-wall'
+import { firebaseApp } from './firebase'
+
+export const RootContainer = () => {
+  return (
+    <AuthWallFirebase
+      auth={firebaseApp.auth()}
+      authComponent={() => <div>Login form</div>}
+      loaderComponent={() => <div>Loading...</div>}
+    >
+      My Web App
+    </AuthWallFirebase>
+  )
 }
 ```
