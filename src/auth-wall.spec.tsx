@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { AuthWall } from './auth-wall'
 import { render } from '@testing-library/react'
+import { Subject } from 'rxjs'
 
 describe('AuthWall', () => {
   it('Should render null and complain when authHook is not provided', () => {
@@ -43,4 +44,60 @@ describe('AuthWall', () => {
     expect(appComponent).toBeCalled()
     expect(wrapper.container.querySelector('#app-component')).not.toBeNull()
   });
+
+  it('Should switch components when auth state changes', () => {
+    const { authDataSubject, useTestAuth } = createTestAuth()
+
+    const authComponent = jest.fn(() => <span id="auth-component" />)
+    const appComponent = jest.fn(() => <span id="app-component" />)
+
+    const component = (
+      <AuthWall
+        authHook={useTestAuth}
+        authComponent={authComponent}
+        appComponent={appComponent}
+      />
+    )
+
+    // 1. set initial auth data, non-authenticated user
+    authDataSubject.next(null)
+    // 2. render a component tree
+    const wrapper = render(component);
+    // 3. Check that auth component is renderer
+    expect(wrapper.container.querySelector('#auth-component')).not.toBeNull()
+    // 4. change auth state by setting new auth data
+    authDataSubject.next({})
+    // 5. rerender the component tree
+    wrapper.rerender(component)
+    // 6. Check that app component is rendered
+    expect(wrapper.container.querySelector('#app-component')).not.toBeNull()
+  });
 });
+
+// Tools
+
+function createTestAuth() {
+  const authDataSubject = new Subject<any>()
+  const useTestAuth = () => {
+    const [data, setData] = useState()
+    useEffect(handleAuthChange, [])
+
+    return { isLoading: false, data }
+
+    function handleAuthChange() {
+      const subscription = authDataSubject.subscribe({
+        next: (newData) => {
+          console.log('newData')
+          setData(newData)
+        }
+      })
+
+      return () => subscription.unsubscribe()
+    }
+  }
+
+  return {
+    authDataSubject,
+    useTestAuth,
+  };
+}
