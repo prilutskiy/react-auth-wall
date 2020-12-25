@@ -22,12 +22,12 @@ yarn add react-auth-wall
 
 User is considered authenticated when `data` isn't falsy.
 
-#### `AuthWall`
+#### Basic
 
 
 ```js
-import React from 'react'
-import { AuthWall } from 'react-auth-wall'
+import React from 'react';
+import { AuthWall } from 'react-auth-wall';
 
 export const App = () => {
   return (
@@ -38,24 +38,54 @@ export const App = () => {
     >
       My Web App
     </AuthWall>
-  )
-}
+  );
+};
 
 const useAuth = () => {
   // ... user retrieval logic here
 
   return { data: null, isLoading: false }
+};
+```
+
+
+#### Redux
+
+
+```js
+import React from 'react';
+import { AuthWall } from 'react-auth-wall';
+import { useSelector } from 'react-redux';
+
+export const App = () => {
+  return (
+    <AuthWall
+      authHook={useAuth}
+      authComponent={() => <div>Login form</div>}
+      loaderComponent={() => <div>Loading...</div>}
+    >
+      My Web App
+    </AuthWall>
+  );
+};
+
+const authSelector = (state) => state.auth;
+
+const useAuth = () => {
+  const { data, isLoading } = useSelector(authSelector);
+
+  return { data, isLoading };
 }
 ```
 
 
-#### `AuthWallFirebase`
+#### Firebase
 
 
 ```js
-import React from 'react'
-import { AuthWallFirebase } from 'react-auth-wall'
-import { firebaseApp } from './firebase'
+import React from 'react';
+import { AuthWallFirebase } from 'react-auth-wall';
+import { firebaseApp } from './firebase';
 
 export const App = () => {
   return (
@@ -66,6 +96,6 @@ export const App = () => {
     >
       My Web App
     </AuthWallFirebase>
-  )
-}
+  );
+};
 ```
